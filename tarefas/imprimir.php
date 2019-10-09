@@ -13,10 +13,10 @@
                 Feminino<input type="radio" name="genero" value="feminino"><br>
                 Outro<input type="radio" name="genero" value="outro"><br>
             Durmiu bem ontem? De uma nota.
-                <select name="dormiu" id="">
+                <select name="dormiu">
                     <?php 
                         for($i = 0; $i <= 10; $i++) { ?>
-                        <option value="<?php $i ?>"><?php echo $i?></option>
+                        <option value="<?php echo $i ?>"><?php echo $i?></option>
                     <?php    } ?>
                 </select><br>
             <input type="checkbox" name="condicoes">Aceito os termos e condicoes<br>
@@ -47,15 +47,13 @@
 
 // ---------- Ejercicio 5 ---------- //
 
-    foreach (getallheaders() as $key => $value) {
-        echo "$key : $value";
-    }
+   // foreach (getallheaders() as $key => $value) { echo "$key : $value"; } -- //
 
 // ----- ¿Para qué sirve esto de arriba? -------//
 
 // -------- Ejercicio 6 ----------- //
 
-var_dump($_SESSION);
+var_dump($_GLOBALS);
 
 ?>
 
