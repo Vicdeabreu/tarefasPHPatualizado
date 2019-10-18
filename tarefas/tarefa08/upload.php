@@ -1,14 +1,19 @@
 <?php
-  if($_POST){
 
-    $nomeArquivo = $_FILES["arquivo"]["name"];
-    $tmpLocal = $_FILES["arquivo"]["tmp_name"];
-    $direccion = dirname(__FILE__)."/uploads/";
+$arquivo = $_FILES["imagem"];
+  if($_FILES){
+
+    $nomeArquivo = $arquivo["name"];
+    $tmpLocal = $arquivo["tmp_name"];
+    $direccion = "uploads";
+    $caminhoCompleto = $direccion."/".$nomeArquivo;
 
       //salvar em caso de o arquivo nao existir
 
     if (!file_exists($direccion.$nomeArquivo)) {
-        $deuCerto = move_uploaded_file($tmpLocal, $direccion.$nomeArquivo);
+        $deuCerto = move_uploaded_file($tmpLocal, $caminhoCompleto);
+        // var_dump($nomeArquivo);
+        // exit;
           if ($deuCerto){
               echo "Seu arquivo foi salvo.";
           } else {
@@ -30,9 +35,12 @@
 </head>
 
 <body>
-  <form action="" method="post" enctype="multipart/form-data">
-    <input type="file" name="arquivo">
-    <button>Upload</button> 
+  <form action="download.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="imagem">
+    <button type="submit">Upload</button> 
+    <?php 
+      var_dump($_FILES)
+    ?>
   </form>
 
 
