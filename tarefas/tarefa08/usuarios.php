@@ -1,9 +1,9 @@
 <?php 
   $nomeArquivo = "usuarios.json";
 
-  function cadastrarUsuario($nome, $sobrenome, $img) {
+  function cadastrarUsuario($nome, $sobrenome, $img, $cv) {
     global $nomeArquivo;
-
+    $usuarios = [];
     if (!file_exists($nomeArquivo)){
       $usuarios = [];
     } else {
@@ -17,29 +17,43 @@
     $direccion = "img";
     $endImagem = $direccion."/".$nomeImagen.$id;
 
+    // Curriculum
+
+    $nomeCV = $cv['name'];
+    $tempCV = $cv['tmp_name'];
+    $direccionCV = "cv";
+    $endCV = $direccionCV."/".$nomeCV;
+
     // Nova informacao 
     $usuarios[] = ["id"=>$id,
                     "nome" => $nome,
                     "sobrenome" => $sobrenome,
-                    "imagem" => $endImagem];
+                    "imagem" => $endImagem,
+                    "cv" => $endCV];
     
     $json = json_encode($usuarios);
     $deuCerto = file_put_contents($nomeArquivo, $json);
 
     if ($deuCerto) {
       if (move_uploaded_file($tempName, $endImagem)) {
-        return "salvo com sucesso.";
+        if (move_uploaded_file($tempCV, $endCV)) {
+          return "Salvo com sucesso";
+        } else {
+          return "Nao foi possivel salvar o cv";
+        } 
       } else {
         return "Nao foi possivel salvar a imagem.";
+        }
       } else {
         return "Nao foi possivel salvar.";
       }
     }
-  }
+  
 
   if ($_POST) {
-    echo cadastrarUsuario($_POST["nome"],$_POST["sobrenome"],$_FILES['img']);
+    echo cadastrarUsuario($_POST["nome"],$_POST["sobrenome"],$_FILES['img'], $_FILES['cv']);
   }
+
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +72,7 @@
       $usuarios = json_decode(file_get_contents($nomeArquivo), true);
       echo "<br><br>";
       foreach ($usuarios as $usuario) {
-        echo $usuario["id"]."|".$usuario["nome"]."|".$usuario["sobrenome"]."|".$usuario["imagem"];
+        echo $usuario["id"]."|".$usuario["nome"]."|".$usuario["sobrenome"]."|".$usuario["imagem"]."|".$usuario["cv"];
       }
     } 
   ?>

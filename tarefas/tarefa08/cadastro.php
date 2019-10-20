@@ -11,7 +11,7 @@
     <input type="text" name="nome" placeholder="Nome do usuario">
     <input type="text" name="sobrenome" placeholder="Sobrenome do usuário">
     <input type="file" name="img" placeholder="Carregue o img">
-    <!-- <input type="file" name="cv" placeholder="Carregue o cv"> -->
+    <input type="file" name="cv" placeholder="Carregue o cv">
     <button>Cadastrar</button>
   </form>
 </body>
