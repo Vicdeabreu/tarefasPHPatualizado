@@ -15,7 +15,7 @@
     $nomeImagen = $img['name'];
     $tempName = $img['tmp_name'];
     $direccion = "img";
-    $endImagem = $direccion."/".$nomeImagen.$id;
+    $endImagem = $direccion."/".$nomeImagen;
 
     // Curriculum
 
@@ -56,7 +56,10 @@
     echo cadastrarUsuario($_POST["nome"],$_POST["sobrenome"],$_FILES['img'], $_FILES['cv']);
   }
 
+ $dadosPerfil = json_decode(file_get_contents($nomeArquivo), true); 
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,17 +70,23 @@
   <title>Document</title>
 </head>
 <body>
-  
-  <?php 
+  <h1>Perfil do usuario</h1>
 
-    if(file_exists($nomeArquivo)) {
-      $usuarios = json_decode(file_get_contents($nomeArquivo), true);
-      echo "<br><br>";
-      foreach ($usuarios as $usuario) {
-        echo $usuario["id"]."|".$usuario["nome"]."|".$usuario["sobrenome"]."|".$usuario["imagem"]."|".$usuario["cv"];
+  <?php for($i=0; $i < count($dadosPerfil); $i++) {
+      if ($i == count($dadosPerfil) - 1) {
+        echo "<label for=''>Nome</label>
+        <input type='text' value='".$dadosPerfil[$i]["nome"]."'><br>
+        <label for=''>Sobrenome</label>
+        <input type='text' value='".$dadosPerfil[$i]['sobrenome']."'><br>
+        <label for=''>Imagem</label>
+        <input type='text' value='".$dadosPerfil[$i]['imagem']."'><br>
+        <label for=''>CV</label>
+        <input type='text' value='".$dadosPerfil[$i]['cv']."'>";
+        echo  "<a href=".$dadosPerfil[$i]['imagem']." download=".$dadosPerfil[$i]['imagem'].">Baixar imagem</a>
+        <a href=".$dadosPerfil[$i]['cv']." download=".$dadosPerfil[$i]['cv'].">Baixar CV</a>";
       }
-    } 
-  ?>
+  } ?>
 
+ 
 </body>
 </html>

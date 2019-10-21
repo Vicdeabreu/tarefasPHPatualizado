@@ -1,0 +1,10 @@
+function escada(altura) { 
+  var escadaFinal = [];
+  var Hashtags = 0;
+  var Espacios = " ";
+  for (var i=0; i<=altura; i++) {
+    Hashtags++;
+    escadaFinal.push(Espacios.repeat(i-1) + Hashtags.repeat(i))
+  } 
+  return escadaFinal
+}

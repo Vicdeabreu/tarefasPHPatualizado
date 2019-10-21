@@ -7,7 +7,7 @@
   <title>Document</title>
 </head>
 <body>
-  <form method="post" enctype="multipart/form-data" action="usuarios.php">
+  <form method="post" enctype="multipart/form-data" action="perfil.php">
     <input type="text" name="nome" placeholder="Nome do usuario">
     <input type="text" name="sobrenome" placeholder="Sobrenome do usuário">
     <input type="file" name="img" placeholder="Carregue o img">

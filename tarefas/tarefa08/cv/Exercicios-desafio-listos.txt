@@ -1,0 +1,94 @@
+function escada(altura) { 
+  var escadaFinal = [];
+  var degrau = "#";
+  var altura = 0;
+  for(var i=0; i<=altura; i++) 
+    if(altura==1){
+      escadaFinal.push(degrau)
+  }
+    if(altura>1){
+      escadaFinal.push(degrau.repeat)
+    }
+    else{escadaFinal="#".repeat}
+  return escadaFinal
+  }
+
+
+
+------------------------
+
+
+function escada(altura) { 
+  var escadaFinal = [];
+  var numeroDeHashtags = 1;
+  var numeroDeEspacios = altura-1;
+  var degrau = 0;
+  for(var i=0; i<=altura; i++) {
+    numeroDeHashtags++;
+    numeroDeEspacios--;
+    degrau = ' '.repeat(numeroDeEspacios) + "#".repeat(numeroDeHashtags)
+    console.log(degrau)
+    escadaFinal.push(degrau)
+  } 
+  return degrau
+
+
+-----------------------------------
+
+
+
+Ejercicio 1 
+
+
+function produto(Array){
+  var produtoFinal = 1
+  for (var i=0;i<Array.length;i++) {
+    produtoFinal=produtoFinal*Array[i]
+  }
+  return produtoFinal
+} 
+
+
+
+--------------------------------------
+
+
+Ejercicio 2 
+
+function maisMenos(umArray) {
+  var resultado = [];
+  var numeroPositivo = 0;
+  var numeroNegativo = 0;
+  var numeroZero = 0;
+   for (var i=0; i<umArray.length; i++) {
+     if(umArray[i]>0){
+       numeroPositivo += 1
+     }
+      else if(umArray[i]<0){
+       numeroNegativo += 1
+     }
+     else {
+       numeroZero += 1
+     }
+   }
+     resultado.push(numeroPositivo/umArray.length);
+     resultado.push(numeroZero/umArray.length);
+     resultado.push(numeroNegativo/umArray.length);
+     return resultado
+}
+
+-------------------------------------------------------
+
+
+Ejercicio 6 
+
+function fatorial(num) {
+  var total = 1;
+  for(var i=1; i<=num; i++) {
+    total *= i;
+  }
+  return total;
+}
+
+
+
