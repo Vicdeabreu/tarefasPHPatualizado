@@ -15,7 +15,7 @@
     $nomeImagen = $img['name'];
     $tempName = $img['tmp_name'];
     $direccion = "img";
-    $endImagem = $direccion."/".$nomeImagen.$id;
+    $endImagem = $direccion."/".$nomeImagen;
 
     // Curriculum
 
